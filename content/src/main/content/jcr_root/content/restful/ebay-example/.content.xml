@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:designPath="/etc/designs/restful"
+        cq:template="/apps/restful/templates/example"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Ebay Example"
+        sling:resourceType="/apps/restful/components/templates/example">
+        <exampleParSys
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys">
+            <example_ebay_search
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="restful/components/content/example-ebay-search"/>
+        </exampleParSys>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="pmd"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>PMD Rules</description>
+
+    <rule ref="rulesets/java/basic.xml">
+        <!-- new in PMD 4.3 (maven-pmd-plugin 2.7) -->
+        <exclude name="AvoidThreadGroup"/>
+    </rule>
+
+    <rule ref="rulesets/java/braces.xml"/>
+    <rule ref="rulesets/java/clone.xml"/>
+
+    <rule ref="rulesets/java/codesize.xml/NPathComplexity">
+        <properties>
+            <property name="minimum" value="300"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/ExcessiveMethodLength"/>
+    <rule ref="rulesets/java/codesize.xml/ExcessiveParameterList"/>
+    <rule ref="rulesets/java/codesize.xml/ExcessiveClassLength"/>
+    <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="showClassesComplexity" value="false"/>
+            <property name="showMethodsComplexity" value="false"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/ExcessivePublicCount">
+        <properties>
+            <property name="minimum" value="100"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/TooManyFields">
+        <properties>
+            <property name="maxfields" value="20"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/codesize.xml/TooManyMethods">
+        <properties>
+            <property name="maxmethods" value="25"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/controversial.xml/DontImportSun"/>
+    <rule ref="rulesets/java/controversial.xml/SuspiciousOctalEscape"/>
+    <rule ref="rulesets/java/controversial.xml/UnnecessaryParentheses">
+        <properties>
+            <property name="xpath"
+                value="//ReturnStatement/Expression/PrimaryExpression/PrimaryPrefix/Expression[count(*)=1]/PrimaryExpression/PrimaryPrefix"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/controversial.xml/AvoidUsingShortType"/>
+    <rule ref="rulesets/java/controversial.xml/AvoidUsingNativeCode"/>
+    <rule ref="rulesets/java/controversial.xml/AvoidAccessibilityAlteration"/>
+    <rule ref="rulesets/java/controversial.xml/DoNotCallGarbageCollectionExplicitly"/>
+
+    <rule ref="rulesets/java/coupling.xml/CouplingBetweenObjects">
+        <properties>
+            <property name="threshold" value="30"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/coupling.xml/ExcessiveImports">
+        <properties>
+            <property name="minimum" value="60"/>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/coupling.xml/LooseCoupling"/>
+
+    <rule ref="rulesets/java/design.xml">
+        <exclude name="EmptyMethodInAbstractClassShouldBeAbstract"/>
+        <exclude name="NonStaticInitializer"/>
+        <exclude name="SingularField"/>
+        <exclude name="ReturnEmptyArrayRatherThanNull"/>
+        <exclude name="TooFewBranchesForASwitchStatement"/>
+    </rule>
+    <rule ref="rulesets/java/finalizers.xml"/>
+
+    <rule ref="rulesets/java/imports.xml">
+        <exclude name="TooManyStaticImports"/>
+    </rule>
+
+    <rule ref="rulesets/java/javabeans.xml/MissingSerialVersionUID"/>
+
+    <rule ref="rulesets/java/junit.xml/JUnitStaticSuite"/>
+    <rule ref="rulesets/java/junit.xml/TestClassWithoutTestCases"/>
+    <rule ref="rulesets/java/junit.xml/UnnecessaryBooleanAssertion"/>
+    <rule ref="rulesets/java/junit.xml/UseAssertEqualsInsteadOfAssertTrue"/>
+    <rule ref="rulesets/java/junit.xml/UseAssertSameInsteadOfAssertTrue">
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+                        //PrimaryExpression[
+                            PrimaryPrefix/Name
+                             [@Image = 'assertTrue' or @Image = 'assertFalse']
+                        ]
+                        [PrimarySuffix/Arguments
+                         /ArgumentList/Expression
+                         /EqualityExpression[count(//NullLiteral) = 0]]
+                    ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+    <rule ref="rulesets/java/junit.xml/UseAssertNullInsteadOfAssertTrue"/>
+    <rule ref="rulesets/java/junit.xml/SimplifyBooleanAssertion"/>
+
+    <rule ref="rulesets/java/logging-jakarta-commons.xml">
+        <!-- new in PMD 4.3 (maven-pmd-plugin 2.7) -->
+        <exclude name="GuardDebugLogging"/>
+    </rule>
+
+    <rule ref="rulesets/java/logging-java.xml"/>
+    <rule ref="rulesets/java/migrating_to_15.xml">
+        <exclude name="AvoidEnumAsIdentifier"/>
+        <exclude name="LongInstantiation"/>
+    </rule>
+
+    <rule ref="rulesets/java/naming.xml">
+        <exclude name="LongVariable"/>
+        <!-- new in PMD 4.3 (maven-pmd-plugin 2.7) -->
+        <exclude name="GenericsNaming"/>
+        <exclude name="VariableNamingConventions"/>
+        <exclude name="ShortClassName"/>
+    </rule>
+    <rule ref="rulesets/java/naming.xml/LongVariable">
+        <properties>
+            <property name="minimum" value="55"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/optimizations.xml">
+        <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="AvoidInstantiatingObjectsInLoops"/>
+        <exclude name="UseStringBufferForStringAppends"/>
+        <exclude name="SimplifyStartsWith"/>
+    </rule>
+    <rule ref="rulesets/java/strictexception.xml">
+        <exclude name="SignatureDeclareThrowsException"/>
+        <!-- new in PMD 4.3 (maven-pmd-plugin 2.7) -->
+        <exclude name="AvoidCatchingGenericException"/>
+    </rule>
+
+    <rule ref="rulesets/java/strings.xml">
+        <exclude name="InefficientEmptyStringCheck"/>
+        <exclude name="InsufficientStringBufferDeclaration"/>
+    </rule>
+
+    <rule ref="rulesets/java/strings.xml/AvoidDuplicateLiterals">
+        <properties>
+            <property name="skipAnnotations" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/sunsecure.xml"/>
+    <rule ref="rulesets/java/unusedcode.xml"/>
+    <rule ref="rulesets/java/j2ee.xml/DoNotCallSystemExit"/>
+    <rule ref="rulesets/java/j2ee.xml/StaticEJBFieldShouldBeFinal"/>
+
+    <rule name="DontUseFinalModifierForInterfaceParameters"
+        language="java"
+        message="Do not use the final modifier on an interface method parameter"
+        class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+            Using the final modifier for interface parameters is meaningless at best, confusing at worst.
+        </description>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+                        //ClassOrInterfaceDeclaration[@Interface="true"]
+                        /ClassOrInterfaceBody
+                        /ClassOrInterfaceBodyDeclaration
+                        /MethodDeclaration
+                        /MethodDeclarator
+                        /FormalParameters
+                        /FormalParameter[@Final="true"]
+                    ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+
+    <rule name="MissingTransientAnnotation"
+        language="java"
+        message="Transient annotation missing for Entity getter"
+        class="net.sourceforge.pmd.lang.rule.XPathRule">
+        <description>
+            Consider adding @Transient to this method - or adding the appropriate JPA annotations
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="xpath">
+                <value>
+                    <![CDATA[
+                        //ClassOrInterfaceBodyDeclaration[
+                            ../../..[count(Annotation//Name[@Image='Entity']) = 1]
+                            and count(Annotation)=0
+                            and MethodDeclaration[@Abstract='false']
+                            and MethodDeclaration/MethodDeclarator[starts-with(@Image,'get') or starts-with(@Image,'is')]
+                            and MethodDeclaration/MethodDeclarator[count(FormalParameters/FormalParameter) = 0]
+                        ]
+                    ]]>
+                </value>
+            </property>
+        </properties>
+    </rule>
+</ruleset>

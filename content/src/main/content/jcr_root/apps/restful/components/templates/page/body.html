@@ -1,0 +1,16 @@
+<!--/*
+    Overridden body overlay.
+    OOTB body.html file is found in /libs/wcm/foundation/components/page/body.html
+*/-->
+
+<sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}">
+    <body class="ng-scope" data-ng-app="restful">
+        <sly data-sly-include="header.html"></sly>
+        <sly data-sly-include="main.html"></sly>
+        <sly data-sly-include="footer.html"></sly>
+
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+        <sly data-sly-call="${clientLib.js @ categories=['restful.main']}"></sly>
+    </body>
+</sly>
+

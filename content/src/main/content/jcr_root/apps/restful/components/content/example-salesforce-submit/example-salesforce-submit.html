@@ -1,0 +1,69 @@
+<div class="component-container" data-ng-controller="salesforceCtrl"
+     data-sly-use.SalesForceUse="com.brandonmaynard.restful.models.use.SalesForceExampleUseModel">
+
+    <h3>Example SalesForce Integration</h3>
+    <p>
+        This is an example for the SalesForce OAUTH REST API. There is a GET request to gather all available
+        endpoints for your instance, a GET request to get the available 'campaigns', and finally, an example
+        of how to POST to SalesForce by sending form date to an sobject named 'Lead'.
+    </p>
+
+    <div class="raw-data">
+        <h2>All Endpoints Raw JSON:</h2>
+        <p class="wordwrap">
+            ${SalesForceUse.allEndPointsJson @ context='unsafe'}
+        </p>
+    </div>
+
+    <div class="raw-data">
+        <h2>SFDC Query Example:</h2>
+        <label for="Campaign">All Available Campaigns</label>
+        <br />
+        <select name="Campaign" id="Campaign">
+            <option disabled value="" selected></option>
+            <sly data-sly-list="${SalesForceUse.campaigns}">
+                <option value="${item.value}">${item.name}</option>
+            </sly>
+        </select>
+    </div>
+
+    <div>
+        <h3>Example SalesForce Lead Submission</h3>
+        <form method="get" action="{{ actionURL }}" data-ng-submit="processSearch()">
+            <div>
+                <label for="FirstName">First Name* </label>
+                <br />
+                <input type="text" name="FirstName" id="FirstName" data-ng-model="FirstName" data-ng-required="true" />
+            </div>
+
+            <div>
+                <label for="LastName">Last Name* </label>
+                <br />
+                <input type="text" name="LastName" id="LastName" data-ng-model="LastName" data-ng-required="true" />
+            </div>
+
+            <div>
+                <label for="Email">Email* </label>
+                <br />
+                <input type="email" name="Email" id="Email" data-ng-model="Email" data-ng-required="true" />
+            </div>
+
+            <div>
+                <label for="Phone">Phone* </label>
+                <br />
+                <input type="tel" name="Phone" id="Phone" data-ng-model="Phone" data-ng-required="true" />
+            </div>
+
+            <div>
+                <label for="Company">Company* </label>
+                <br />
+                <input type="text" name="Company" id="Company" data-ng-model="Company" data-ng-required="true" />
+            </div>
+
+            <div>
+                <input type="hidden" data-ng-model="uri" data-ng-init="uri='${resource.path @ context='uri'}'" />
+                <input class="btn" type="submit" name="submit" id="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="component-container" data-ng-controller="ebayCtrl">
+    <h3>Example Ebay Query</h3>
+    <p>
+        This is an example of the only endpoint accounted for (search by keyword). You can develop more
+        endpoints as you see fit. This is just a proof of concept to demonstrate the integration works,
+        and with minimal effort too!
+    </p>
+
+    <form method="get" action="{{ actionURL }}" data-ng-submit="processSearch()">
+        <div>
+            <label for="search">Search Term* </label>
+            <br />
+            <input type="text" name="search" id="search" data-ng-model="search" data-ng-required="true" />
+        </div>
+
+        <div>
+            <label for="limit">Limit* </label>
+            <br />
+            <input type="number" name="limit" id="limit" data-ng-model="limit" data-ng-required="true" value="3" />
+        </div>
+
+        <div>
+            <input type="hidden" data-ng-model="uri" data-ng-init="uri='${resource.path @ context='uri'}'" />
+            <input class="btn" type="submit" name="submit" id="submit" value="Submit" />
+        </div>
+    </form>
+</div>

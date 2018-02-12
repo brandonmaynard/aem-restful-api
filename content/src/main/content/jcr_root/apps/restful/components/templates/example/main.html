@@ -1,0 +1,19 @@
+<!--/*
+    Overridden main overlay.
+    Parent file is found in /apps/restful/components/templates/page/main.html
+*/-->
+
+<main>
+    <sly data-sly-test="${wcmmode.edit || wcmmode.design}">
+        <div id="design-warning">
+            <p>
+                If you have not set the 'cq:designPath' property (page properties) to the path where the
+                'Restful API Design' lives, none of the example components will show up in the sidekick.
+            </p>
+        </div>
+    </sly>
+
+    <div id="content">
+        <sly data-sly-resource="${ @path='exampleParSys', resourceType='foundation/components/parsys'}"></sly>
+    </div>
+</main>

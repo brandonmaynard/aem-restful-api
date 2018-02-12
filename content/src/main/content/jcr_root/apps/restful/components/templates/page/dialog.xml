@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="400"
+    stateful="false"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <filed-set
+            jcr:primaryType="cq:Widget"
+            collapsed="{Boolean}false"
+            collapsible="{Boolean}false"
+            xtype="dialogfieldset">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <designpath
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Design"
+                    name="./cq:designPath"
+                    predicate="hierarchyNotFile"
+                    rootPath="/etc/designs"
+                    xtype="pathfield"/>
+            </items>
+        </filed-set>
+    </items>
+</jcr:root>

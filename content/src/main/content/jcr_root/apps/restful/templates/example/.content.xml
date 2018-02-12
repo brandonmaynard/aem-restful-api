@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:description="Restful API Example Content Page"
+    jcr:primaryType="cq:Template"
+    jcr:title="Restful API Example Content Page"
+    allowedPaths="[/(.*)?]"
+    ranking="{Long}10">
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="/apps/restful/components/templates/example">
+        <exampleParSys
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="foundation/components/parsys"/>
+    </jcr:content>
+</jcr:root>

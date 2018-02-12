@@ -1,0 +1,137 @@
+h1, h2, h3, h4, h5, h6 {
+    color: @color-secondary-dark;
+    font-family: @font-family-heading;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2, h3 {
+    font-size: 30px;
+}
+
+h3 {
+    font-family: @font-family-text;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 15px;
+}
+
+p, span, label, input {
+    color: @color-secondary-dark;
+    font-family: @font-family-text;
+}
+
+p {
+    font-size: 16px;
+    line-height: 25px;
+}
+
+span {
+    font-size: 14px;
+}
+
+label, input {
+    font-size: 18px;
+}
+
+label {
+    font-weight: 700;
+}
+
+a {
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: @color-primary;
+    color: @color-white;
+    padding: 20px 0;
+
+    #header-content {
+        border-bottom: 3px solid @color-white;
+        margin: auto;
+        width: 1250px;
+
+        h1 {
+            color: @color-white;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+main {
+    margin: 40px auto;
+    min-height: 400px;
+    width: 980px;
+
+    #design-warning {
+        background: @color-author;
+        border: 8px dashed @color-author-dark;
+        padding: 15px;
+
+        p {
+            color: @color-black;
+        }
+    }
+
+    .raw-data {
+        border: 8px dashed @color-primary;
+        margin: 25px 0;
+        padding: 15px;
+    }
+
+    .wordwrap {
+        word-wrap: break-word;
+    }
+}
+
+footer {
+    background-color: @color-secondary;
+    padding: 20px 0;
+
+    #footer-content {
+        margin: auto;
+        text-align: center;
+        width: 1050px;
+
+        p, span {
+            color: @color-white;
+        }
+    }
+}
+
+input[type='text'], input[type='number'], input[type='email'], input[type='tel'] {
+    height: 25px;
+    margin-bottom: 20px;
+    width: 450px;
+}
+
+select {
+    height: 30px;
+    margin-bottom: 20px;
+    width: 455px;
+}
+
+.btn {
+    background: @color-black;
+    color: @color-white;
+    cursor: pointer;
+    padding: 10px 25px;
+}
